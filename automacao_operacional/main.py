@@ -1,9 +1,9 @@
 from playwright.sync_api import Playwright, sync_playwright
 from dotenv import load_dotenv
-from steps.login import login
-from steps.proposta_simulador import proposta_simulador
+from simulador.steps.login import login
+from simulador.steps.proposta_simulador import proposta_simulador
 from time import sleep
-from steps.util.data import Data
+from simulador.steps.util.data import Data
 
 load_dotenv()
 

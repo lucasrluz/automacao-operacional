@@ -1,5 +1,5 @@
 from playwright.sync_api import Page
-from steps.util.data import Data
+from simulador.steps.util.data import Data
 from .util.element_identifiers import (
     PROPOSTA_SIMULADOR,
     DADOS_DA_SIMULACAO_INFORME_O_VALOR_SOLICITADO,

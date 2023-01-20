@@ -1,6 +1,6 @@
 from playwright.sync_api import Page
-from steps.util.data import Data
-from steps.util.element_identifiers import (
+from simulador.steps.util.data import Data
+from simulador.steps.util.element_identifiers import (
     DADOS_DO_REPRESENTANTE_LEGAL_CPF,
     DADOS_DO_REPRESENTANTE_LEGAL_NOME
 )

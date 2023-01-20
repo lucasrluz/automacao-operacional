@@ -1,7 +1,7 @@
 from playwright.sync_api import Page
-from steps.util.data import Data
+from simulador.steps.util.data import Data
 from time import sleep
-from steps.util.element_identifiers import (
+from simulador.steps.util.element_identifiers import (
     DADOS_DA_PROPOSTA_PRODUTO,
     DADOS_DA_PROPOSTA_TIPO_DE_OPERACAO,
     DADOS_DA_PROPOSTA_ORGAO_OU_EMPREGADOR,
