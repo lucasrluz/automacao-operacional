@@ -10,4 +10,7 @@ class Data(TypedDict):
     dados_do_cliente_nome_do_cliente: str
     dados_do_representante_legal_cpf: str
     dados_do_representante_legal_nome: str
+    dados_da_simulacao_informe_o_valor_solicitado: str
+    dados_da_simulacao_valor_solicitado: str
+    dados_da_simulacao_informe_o_prazo_solicitado: str
 

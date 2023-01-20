@@ -10,7 +10,11 @@ from .util.element_identifiers import (
     DADOS_DO_CLIENTE_DATA_DE_NASCIMENTO,
     DADOS_DO_CLIENTE_NOME_DO_CLIENTE,
     DADOS_DO_REPRESENTANTE_LEGAL_CPF,
-    DADOS_DO_REPRESENTANTE_LEGAL_NOME
+    DADOS_DO_REPRESENTANTE_LEGAL_NOME,
+    DADOS_DA_SIMULACAO_INFORME_O_VALOR_SOLICITADO,
+    DADOS_DA_SIMULACAO_VALOR_SOLICITADO,
+    DADOS_DA_SIMULACAO_INFORME_O_PRAZO_SOLICITADO,
+    PESQUISAR
 )
 
 from time import sleep
@@ -47,6 +51,11 @@ orgao_ou_empregador = {
     'PODER JUDICIARIO - RS':            '100'
 }
 
+valor_solicitado = {
+    'Contrato': '1',
+    'Parcela': '2'
+}
+
 
 def proposta_simulador(page: Page, data: Data):
     page.evaluate('(PROPOSTA_SIMULADOR) => document.querySelector(PROPOSTA_SIMULADOR).click()', PROPOSTA_SIMULADOR)
@@ -55,32 +64,45 @@ def proposta_simulador(page: Page, data: Data):
     sleep(5)
     page.locator(DADOS_DA_PROPOSTA_PRODUTO).select_option(data['dados_da_proposta_produto'])
     
-    sleep(1)
+    sleep(0.5)
     page.locator(DADOS_DA_PROPOSTA_TIPO_DE_OPERACAO).select_option(tipo_de_operacao[data['dados_da_proposta_tipo_de_operacao']])
 
-    sleep(1)
+    sleep(0.5)
     page.locator(DADOS_DA_PROPOSTA_ORGAO_OU_EMPREGADOR).select_option(orgao_ou_empregador[data['dados_da_proposta_orgao_ou_empregador']])
 
-    sleep(1)
+    sleep(0.5)
     page.locator(DADOS_DA_PROPOSTA_BANCO).select_option('3')
 
     # Dados do Cliente
-    sleep(1)
+    sleep(0.5)
     page.locator(DADOS_DO_CLIENTE_CPF).type(data['dados_do_cliente_cpf'])
     
-    sleep(1)
+    sleep(0.5)
     page.locator(DADOS_DO_CLIENTE_DATA_DE_NASCIMENTO).type('')
     
     sleep(5)
     page.locator(DADOS_DO_CLIENTE_DATA_DE_NASCIMENTO).type(data['dados_do_cliente_data_de_nascimento'])
     
-    sleep(1)
+    sleep(0.5)
     page.locator(DADOS_DO_CLIENTE_NOME_DO_CLIENTE).type(data['dados_do_cliente_nome_do_cliente'])
 
     # Dados do Representante Legal
 
-    sleep(1)
+    sleep(0.5)
     page.locator(DADOS_DO_REPRESENTANTE_LEGAL_CPF).type(data['dados_do_representante_legal_cpf'])
 
-    sleep(1)
+    sleep(0.5)
     page.locator(DADOS_DO_REPRESENTANTE_LEGAL_NOME).type(data['dados_do_representante_legal_nome'])
+
+    # Dados da Simulação
+    sleep(0.5)
+    page.locator(DADOS_DA_SIMULACAO_INFORME_O_VALOR_SOLICITADO).type(data['dados_da_simulacao_informe_o_valor_solicitado'])
+
+    sleep(0.5)
+    page.locator(DADOS_DA_SIMULACAO_VALOR_SOLICITADO).select_option(valor_solicitado[data['dados_da_simulacao_valor_solicitado']])
+
+    sleep(0.5)
+    page.locator(DADOS_DA_SIMULACAO_INFORME_O_PRAZO_SOLICITADO).type(data['dados_da_simulacao_informe_o_prazo_solicitado'])
+
+    sleep(0.5)
+    page.locator(PESQUISAR).click()

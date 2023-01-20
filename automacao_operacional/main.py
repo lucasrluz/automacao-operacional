@@ -16,9 +16,12 @@ data_for_tests: Data = {
     'dados_do_cliente_data_de_nascimento': '19/01/2023',
     'dados_do_cliente_nome_do_cliente': 'Test1...',
     'dados_do_representante_legal_cpf': '555.666.777.88',
-    'dados_do_representante_legal_nome': 'Test2...'
+    'dados_do_representante_legal_nome': 'Test2...',
+    'dados_da_simulacao_informe_o_valor_solicitado': '100.50',
+    'dados_da_simulacao_valor_solicitado': 'Contrato',
+    'dados_da_simulacao_informe_o_prazo_solicitado': '100'
 }
-
+ 
 def main(playwright: Playwright):
     browser = playwright.chromium.launch(headless=False, channel='chromium')
     page = browser.new_page()
