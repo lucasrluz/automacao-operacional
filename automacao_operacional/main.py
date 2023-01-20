@@ -2,6 +2,8 @@ from playwright.sync_api import Playwright, sync_playwright
 from dotenv import load_dotenv
 from simulador.steps.login import login
 from simulador.steps.proposta_simulador import proposta_simulador
+from yuppie.steps.yuppie_login import yupie_login
+from yuppie.steps.get_values import get_value
 from time import sleep
 from simulador.steps.util.data import Data
 
@@ -25,14 +27,19 @@ data_for_tests: Data = {
 def main(playwright: Playwright):
     browser = playwright.chromium.launch(headless=False, channel='chromium')
     page = browser.new_page()
-    page.goto('https://desenv.facta.com.br/sistemaNovo/login.php')
+    page.goto('https://sistemayuppie.com.br/agilizzapromotora/public/auth/login')
 
-    login(page)
+    yupie_login(page)
 
-    sleep(5)
-    proposta_simulador(page, data_for_tests)
+    get_value(page)
+
+    #page.goto('https://desenv.facta.com.br/sistemaNovo/login.php')
+    #login(page)
+
+    #sleep(5)
+    #proposta_simulador(page, data_for_tests)
     
-    sleep(1000)
+    sleep(10000000)
 
 with sync_playwright() as playwright:
     main(playwright)
