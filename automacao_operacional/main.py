@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 from simulador.steps.login import login
 from simulador.steps.proposta_simulador import proposta_simulador
 from yuppie.steps.yuppie_login import yupie_login
-from yuppie.steps.get_values import get_value
+from yuppie.steps.propostas import propostas
 from time import sleep
 from simulador.steps.util.data import Data
 
@@ -31,13 +31,23 @@ def main(playwright: Playwright):
 
     yupie_login(page)
 
-    get_value(page)
+    proposta_data = propostas(page)
+    print(proposta_data)
 
-    #page.goto('https://desenv.facta.com.br/sistemaNovo/login.php')
-    #login(page)
+    data_for_simulador: Data = {
+        'dados_do_cliente_cpf': proposta_data['proposta_dados_do_tomador']['proposta_dados_do_tomador_cpf'],
+        'dados_do_cliente_data_de_nascimento': proposta_data['proposta_dados_do_tomador']['proposta_dados_do_tomador_data_nascimento'],
+        'dados_do_cliente_nome_do_cliente': proposta_data['proposta_dados_do_tomador']['proposta_dados_do_tomador_nome'],
+        'dados_da_simulacao_informe_o_valor_solicitado': proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_valor_parcela'],
+        'dados_da_simulacao_valor_solicitado': ''
+    
+    }
+ 
+    page.goto('https://desenv.facta.com.br/sistemaNovo/login.php')
+    login(page)
 
-    #sleep(5)
-    #proposta_simulador(page, data_for_tests)
+    sleep(5)
+    proposta_simulador(page, data_for_tests)
     
     sleep(10000000)
 
