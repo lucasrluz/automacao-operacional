@@ -24,7 +24,7 @@ def proposta_simulador(page: Page, data: Data):
     simulador_dados_do_cliente(page, data)
 
     # Dados do Representante Legal
-    simulador_dados_do_representante_legal(page, data)
+    #simulador_dados_do_representante_legal(page, data)
 
     # Dados da Simulação
     simulador_dados_da_simulacao(page, data)

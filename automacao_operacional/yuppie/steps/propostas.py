@@ -17,9 +17,12 @@ def propostas(page: Page):
     page.locator(PROPOSTAS).click(timeout=60000)
 
     sleep(3)
-
+ 
+    valor_id = '#sortedTable > thead > tr > th:nth-child(12)'
+    page.evaluate('(valor_id) => document.querySelector(valor_id).click()', valor_id)
     i = 1
     while(True):
+        print(i)
         TR_ID = f'#sortedTable > tbody > tr:nth-child({i}) > td:nth-child(2)'
         td = page.evaluate('(TR_ID) => document.querySelector(TR_ID)', TR_ID)
         
@@ -30,13 +33,17 @@ def propostas(page: Page):
         LINK_A = f'#sortedTable > tbody > tr:nth-child({i}) > td:nth-child(14) > a'
 
         # if page.evaluate('(TR_ID) => document.querySelector(TR_ID).innerHTML', TR_ID) == 'FACTA':
-        if True:
+        ID_TD = f'#sortedTable > tbody > tr:nth-child({i}) > td:nth-child(10)'
+        ID_NOME = f'#sortedTable > tbody > tr:nth-child({i}) > td:nth-child(8)'
+        x = page.evaluate('(ID_TD) => document.querySelector(ID_TD).innerHTML', ID_TD)
+        y = page.evaluate('(ID_NOME) => document.querySelector(ID_NOME).innerHTML', ID_NOME)
+        print(x)
+        if y == 'YAGO PEREIRA NU':
             print('Elemento encontrado')
             page.evaluate('(LINK_A) => document.querySelector(LINK_A).click()', LINK_A)
 
             proposta_data = get_values(page)
         
-        break
-        # i += 1
+        i += 1
 
     return proposta_data
