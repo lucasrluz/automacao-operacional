@@ -3,6 +3,8 @@ YUPPIE_PASSWORD = '#senha'
 YUPPIE_BUTTON_SUBMIT = '#submit'
 
 PROPOSTAS = '#nav > ul > li:nth-child(2) > a'
+FILTER_PROPOSTA = '#sortedTable > thead > tr > th:nth-child(12)'
+PROPOSTA = '#sortedTable > tbody > tr:nth-child(1) > td:nth-child(14) > a'
 
 PROPOSTA_DADOS_DO_TOMADOR_CPF = '#cpf'
 PROPOSTA_DADOS_DO_TOMADOR_NOME = '#nome'
