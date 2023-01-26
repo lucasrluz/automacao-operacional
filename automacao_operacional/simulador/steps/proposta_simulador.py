@@ -27,10 +27,11 @@ def proposta_simulador(page: Page, data: Data):
     # Dados da Simulação
     simulador_dados_da_simulacao(page, data)
 
-    #Pesquisar tabelas
+    # Pesquisar tabelas
     sleep(0.5)
     page.locator(PESQUISAR).click()
 
+    # Selecionar tabelas
     sleep(2)
     simulador_tabela_for_operacao(page, data)
     
