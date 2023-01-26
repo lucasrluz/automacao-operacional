@@ -15,12 +15,16 @@ def simulador_tabela_for_operacao(page: Page, data: Data):
     sleep(2)
 
     # Tratamento de erro
-    if page.evaluate('(ERROR_MESSAGE_ONE) => document.querySelector(ERROR_MESSAGE_ONE).innerHTML', ERROR_MESSAGE_ONE) == 'Não foram encontradas tabelas para os filtros realizados':
-        return print('Error: Não foram encontradas tabelas para os filtros realizados')
+    errorOne = page.evaluate('(ERROR_MESSAGE_ONE) => document.querySelector(ERROR_MESSAGE_ONE)', ERROR_MESSAGE_ONE)
+    if errorOne != None:
+        if errorOne.innerHTML == 'Não foram encontradas tabelas para os filtros realizados':
+            return print('Error: Não foram encontradas tabelas para os filtros realizados')
     
     # Tratamento de erro
-    if page.evaluate('(ERROR_MESSAGE_TWO) => document.querySelector(ERROR_MESSAGE_TWO).innerHTML', ERROR_MESSAGE_TWO) == 'Valor da parcela é inferior ao mínimo permitido.':
-        return print('Valor da parcela é inferior ao mínimo permitido.')
+    errorTwo = page.evaluate('(ERROR_MESSAGE_TWO) => document.querySelector(ERROR_MESSAGE_TWO)', ERROR_MESSAGE_TWO)
+    if errorTwo != None:
+        if errorTwo.innerHTML == 'Valor da parcela é inferior ao mínimo permitido.':
+            return print('Valor da parcela é inferior ao mínimo permitido.')
 
     # Seleciona tabela para operação
     i = 1
