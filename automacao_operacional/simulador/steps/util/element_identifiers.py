@@ -23,3 +23,5 @@ PESQUISAR = '#pesquisar'
 
 ERROR_MESSAGE_ONE = '#myTable > tbody > tr > td > font' # Não foram encontradas tabelas para os filtros realizados
 ERROR_MESSAGE_TWO = '#myTable > tbody > tr > td' # 'Valor da parcela é inferior ao mínimo permitido.'
+
+NEXT_PAGE_ONE = '#etapa1'
