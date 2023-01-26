@@ -10,6 +10,20 @@ from simulador.steps.util.data import Data
 
 load_dotenv()
 
+data = {
+    'dados_da_proposta_produto': 'D',
+    'dados_da_proposta_tipo_de_operacao': 'NOVO DIGITAL', 
+    'dados_da_proposta_orgao_ou_empregador': 'INSS',
+    'dados_da_proposta_banco': '3',
+    'dados_do_cliente_cpf': '31307019072',
+    'dados_do_cliente_data_de_nascimento': '22/07/1983', 
+    'dados_do_cliente_nome_do_cliente': 'JOAO CARLOS DOS SANTOS',
+    'dados_da_simulacao_informe_o_valor_solicitado': '20', 
+    'dados_da_simulacao_valor_solicitado': 'Parcela',
+    'dados_da_simulacao_informe_o_prazo_solicitado': '1', 
+    'codigo_especie': '32'
+}
+
 def set_data(proposta_data: PropostaData, page: Page):
     tipo_de_operacao = ''
     valor_solicitado = ''
@@ -61,22 +75,22 @@ def print_dict(value: dict):
  
 def main(playwright: Playwright):
     browser = playwright.chromium.launch(headless=False, channel='chromium')
-    pageOne = browser.new_page()
-    pageOne.goto('https://sistemayuppie.com.br/agilizzapromotora/public/auth/login')
+    # pageOne = browser.new_page()
+    # pageOne.goto('https://sistemayuppie.com.br/agilizzapromotora/public/auth/login')
 
-    yupie_login(pageOne)
+    # yupie_login(pageOne)
 
-    proposta_data = propostas(pageOne)
-    print_dict(proposta_data)
+    # proposta_data = propostas(pageOne)
+    # print_dict(proposta_data)
 
     pageTwo = browser.new_page()
     pageTwo.goto('https://desenv.facta.com.br/sistemaNovo/login.php')
     login(pageTwo)
 
-    simulador_data = set_data(proposta_data, pageTwo)
+    # simulador_data = set_data(proposta_data, pageTwo)
 
     sleep(5)
-    run_proposta_simulador(pageTwo, simulador_data)
+    run_proposta_simulador(pageTwo, data)
     
     sleep(10000000)
 
