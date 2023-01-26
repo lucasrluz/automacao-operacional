@@ -2,6 +2,7 @@ from playwright.sync_api import Page
 from simulador.steps.util.data import Data
 from .util.element_identifiers import (
     PROPOSTA_SIMULADOR,
+    NEXT_PAGE_ONE,
     DADOS_DA_SIMULACAO_INFORME_O_VALOR_SOLICITADO,
     DADOS_DA_SIMULACAO_VALOR_SOLICITADO,
     DADOS_DA_SIMULACAO_INFORME_O_PRAZO_SOLICITADO,
@@ -30,3 +31,5 @@ def run_proposta_simulador(page: Page, data: Data):
     # Selecionar tabelas
     simulador_tabela_for_operacao(page, data)
     
+    # Proxima página
+    # page.evaluate('(NEXT_PAGE_ONE) => document.querySelector(NEXT_PAGE_ONE).click()', NEXT_PAGE_ONE)
