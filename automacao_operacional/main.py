@@ -1,7 +1,7 @@
 from playwright.sync_api import Playwright, sync_playwright, Page
 from dotenv import load_dotenv
 from simulador.steps.login import login
-from simulador.steps.proposta_simulador import proposta_simulador
+from simulador.steps.run_proposta_simulador import run_proposta_simulador
 from yuppie.steps.yuppie_login import yupie_login
 from yuppie.steps.propostas import propostas
 from yuppie.steps.util.proposta_data import PropostaData
@@ -13,6 +13,7 @@ load_dotenv()
 def set_data(proposta_data: PropostaData, page: Page):
     tipo_de_operacao = ''
     valor_solicitado = ''
+    informe_o_valor_solicitado = ''
 
     print(proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_tipo'])
     # if proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_tipo'] == 'NOVO':
@@ -21,10 +22,12 @@ def set_data(proposta_data: PropostaData, page: Page):
     # remover depois
     tipo_de_operacao = 'NOVO DIGITAL'
 
-    if proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_valor_parcela'] != None:
+    if proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_valor_parcela'] != '0,00':
         valor_solicitado = 'Parcela'
+        informe_o_valor_solicitado = proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_valor_parcela']
     else:
         valor_solicitado = 'Contrato'
+        informe_o_valor_solicitado = proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_valor_bruto']
     
 
     simulador_data: Data = {
@@ -35,7 +38,7 @@ def set_data(proposta_data: PropostaData, page: Page):
         'dados_do_cliente_cpf': proposta_data['proposta_dados_do_tomador']['proposta_dados_do_tomador_cpf'],
         'dados_do_cliente_data_de_nascimento': proposta_data['proposta_dados_do_tomador']['proposta_dados_do_tomador_data_nascimento'],
         'dados_do_cliente_nome_do_cliente': proposta_data['proposta_dados_do_tomador']['proposta_dados_do_tomador_nome'],
-        'dados_da_simulacao_informe_o_valor_solicitado': proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_valor_parcela'],
+        'dados_da_simulacao_informe_o_valor_solicitado': informe_o_valor_solicitado,
         'dados_da_simulacao_valor_solicitado': valor_solicitado,
         'dados_da_simulacao_informe_o_prazo_solicitado': proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_prazo'],
         'codigo_especie': proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_codigo_especie']
@@ -73,7 +76,7 @@ def main(playwright: Playwright):
     simulador_data = set_data(proposta_data, pageTwo)
 
     sleep(5)
-    proposta_simulador(pageTwo, simulador_data)
+    run_proposta_simulador(pageTwo, simulador_data)
     
     sleep(10000000)
 
