@@ -14,7 +14,7 @@ valor_solicitado = {
 
 def simulador_dados_da_simulacao(page: Page, data: Data):
     sleep(0.5)
-    page.locator(DADOS_DA_SIMULACAO_INFORME_O_VALOR_SOLICITADO).type(data['dados_da_simulacao_informe_o_valor_solicitado'])
+    page.locator(DADOS_DA_SIMULACAO_INFORME_O_VALOR_SOLICITADO).type('2000') #data['dados_da_simulacao_informe_o_valor_solicitado']
 
     sleep(0.5)
     page.locator(DADOS_DA_SIMULACAO_VALOR_SOLICITADO).select_option(valor_solicitado[data['dados_da_simulacao_valor_solicitado']])
