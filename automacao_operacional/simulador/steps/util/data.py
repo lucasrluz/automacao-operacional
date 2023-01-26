@@ -13,4 +13,5 @@ class Data(TypedDict):
     dados_da_simulacao_informe_o_valor_solicitado: str
     dados_da_simulacao_valor_solicitado: str
     dados_da_simulacao_informe_o_prazo_solicitado: str
+    codigo_especie: str
 
