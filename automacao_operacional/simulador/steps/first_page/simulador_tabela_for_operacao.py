@@ -2,8 +2,7 @@ from playwright.sync_api import Page
 from simulador.steps.util.data import Data
 from time import sleep
 from simulador.steps.util.element_identifiers import (
-    ERROR_MESSAGE_ONE,
-    ERROR_MESSAGE_TWO,
+    ERROR,
     PESQUISAR
 )
 
@@ -15,16 +14,15 @@ def simulador_tabela_for_operacao(page: Page, data: Data):
     sleep(2)
 
     # Tratamento de erro
-    errorOne = page.evaluate('(ERROR_MESSAGE_ONE) => document.querySelector(ERROR_MESSAGE_ONE)', ERROR_MESSAGE_ONE)
-    if errorOne != None:
-        if errorOne.innerHTML == 'Não foram encontradas tabelas para os filtros realizados':
-            return print('Error: Não foram encontradas tabelas para os filtros realizados')
-    
-    # Tratamento de erro
-    errorTwo = page.evaluate('(ERROR_MESSAGE_TWO) => document.querySelector(ERROR_MESSAGE_TWO)', ERROR_MESSAGE_TWO)
-    if errorTwo != None:
-        if errorTwo.innerHTML == 'Valor da parcela é inferior ao mínimo permitido.':
-            return print('Valor da parcela é inferior ao mínimo permitido.')
+    error_test: str = page.evaluate('(ERROR) => document.querySelector(ERROR).innerHTML', ERROR)
+
+    if error_test.strip() == '<td colspan="13">Valor da parcela é inferior ao mínimo permitido.</td>':
+        print('Valor da parcela é inferior ao mínimo permitido.')
+        return
+    elif error_test == '<td valign="top" colspan="9" class="dataTables_empty"><font color="red">Não foram encontradas tabelas para os filtros realizados</font></td>':
+        print('Não foram encontradas tabelas para os filtros realizados')
+        return
+    # sleep(100000)
 
     # Seleciona tabela para operação
     i = 1
@@ -38,7 +36,7 @@ def simulador_tabela_for_operacao(page: Page, data: Data):
         if data['codigo_especie'] == '32':
             table_name = page.evaluate('(TABELA_ID) => document.querySelector(TABELA_ID).innerHTML', TABLE_ID)
 
-            if table_name == '39985 - SMART Especial Novo PN':
+            if table_name == '39195 - INSS Novo Especial RB':
                 page.click(TABLE_ID)
                 break
         i += 1

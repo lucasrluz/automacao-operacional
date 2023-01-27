@@ -1,7 +1,7 @@
 from playwright.sync_api import Playwright, sync_playwright, Page
 from dotenv import load_dotenv
-from simulador.steps.login import login
-from simulador.steps.run_proposta_simulador import run_proposta_simulador
+from simulador.steps.first_page.login import login
+from simulador.steps.first_page.run_proposta_simulador import run_proposta_simulador
 from yuppie.steps.yuppie_login import yupie_login
 from yuppie.steps.propostas import propostas
 from yuppie.steps.util.proposta_data import PropostaData
@@ -18,9 +18,9 @@ data = {
     'dados_do_cliente_cpf': '31307019072',
     'dados_do_cliente_data_de_nascimento': '22/07/1983', 
     'dados_do_cliente_nome_do_cliente': 'JOAO CARLOS DOS SANTOS',
-    'dados_da_simulacao_informe_o_valor_solicitado': '20', 
+    'dados_da_simulacao_informe_o_valor_solicitado': '200000', # 200000 or 2000 
     'dados_da_simulacao_valor_solicitado': 'Parcela',
-    'dados_da_simulacao_informe_o_prazo_solicitado': '1', 
+    'dados_da_simulacao_informe_o_prazo_solicitado': '84', 
     'codigo_especie': '32'
 }
 
