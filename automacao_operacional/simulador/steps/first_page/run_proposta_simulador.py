@@ -3,6 +3,7 @@ from simulador.steps.util.data import Data
 from simulador.steps.util.element_identifiers import (
     PROPOSTA_SIMULADOR,
     NEXT_PAGE_ONE,
+    NEXT_PAGE_TWO,
     DADOS_DA_SIMULACAO_INFORME_O_VALOR_SOLICITADO,
     DADOS_DA_SIMULACAO_VALOR_SOLICITADO,
     DADOS_DA_SIMULACAO_INFORME_O_PRAZO_SOLICITADO,
@@ -13,6 +14,8 @@ from .simulador_dados_do_cliente import simulador_dados_do_cliente
 from .simulador_dados_do_representante_legal import simulador_dados_do_representante_legal
 from .simulador_dados_da_simulacao import simulador_dados_da_simulacao
 from .simulador_tabela_for_operacao import simulador_tabela_for_operacao
+
+from ..second_page.dados_cadastro_operacao import dados_cadastro_operacao
 
 from time import sleep
 
@@ -32,4 +35,10 @@ def run_proposta_simulador(page: Page, data: Data):
     simulador_tabela_for_operacao(page, data)
     
     # Proxima página
-    # page.evaluate('(NEXT_PAGE_ONE) => document.querySelector(NEXT_PAGE_ONE).click()', NEXT_PAGE_ONE)
+    page.evaluate('(NEXT_PAGE_ONE) => document.querySelector(NEXT_PAGE_ONE).click()', NEXT_PAGE_ONE)
+
+    # Seta vendedor
+    dados_cadastro_operacao(page)
+
+    # Proxíma página
+    page.click(NEXT_PAGE_TWO)
