@@ -11,7 +11,7 @@ def simulador_tabela_for_operacao(page: Page, data: Data):
     sleep(0.5)
     page.locator(PESQUISAR).click()
 
-    sleep(2)
+    sleep(3)
 
     # Tratamento de erro
     error_test: str = page.evaluate('(ERROR) => document.querySelector(ERROR).innerHTML', ERROR)
