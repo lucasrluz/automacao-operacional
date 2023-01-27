@@ -24,3 +24,7 @@ PESQUISAR = '#pesquisar'
 ERROR = '#myTable > tbody > tr'
 
 NEXT_PAGE_ONE = '#etapa1'
+NEXT_PAGE_TWO = '#etapa_2'
+
+BUSCAR_VENDEDOR_CPF = '#cpfVendedor'
+BUSCAR_VENDEDOR_LOGIN_OU_NOME = '#nomeVendedor'
