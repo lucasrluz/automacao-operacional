@@ -14,7 +14,7 @@ from .simulador_dados_do_cliente import simulador_dados_do_cliente
 from .simulador_dados_do_representante_legal import simulador_dados_do_representante_legal
 from .simulador_dados_da_simulacao import simulador_dados_da_simulacao
 from .simulador_tabela_for_operacao import simulador_tabela_for_operacao
-
+from ..third_page.informacoes_de_contato import informacoes_de_contato
 from ..second_page.dados_cadastro_operacao import dados_cadastro_operacao
 
 from time import sleep
@@ -42,3 +42,6 @@ def run_proposta_simulador(page: Page, data: Data):
 
     # Proxíma página
     page.click(NEXT_PAGE_TWO)
+
+    # Informações de contato
+    informacoes_de_contato(page, data)
