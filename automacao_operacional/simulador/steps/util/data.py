@@ -14,4 +14,10 @@ class Data(TypedDict):
     dados_da_simulacao_valor_solicitado: str
     dados_da_simulacao_informe_o_prazo_solicitado: str
     codigo_especie: str
+    informacoes_de_contato_cep: str
+    informacoes_de_contato_endereco: str
+    informacoes_de_contato_numero: str
+    informacoes_de_contato_cemplemento: str
+    informacoes_de_contato_bairro: str
+    informacoes_de_contato_cidade: str
 

@@ -21,7 +21,13 @@ data = {
     'dados_da_simulacao_informe_o_valor_solicitado': '200000', # 200000 or 2000 
     'dados_da_simulacao_valor_solicitado': 'Parcela',
     'dados_da_simulacao_informe_o_prazo_solicitado': '84', 
-    'codigo_especie': '32'
+    'codigo_especie': '32',
+    'informacoes_de_contato_cep': '93822032',
+    'informacoes_de_contato_endereco': 'RUA PRIMEIRO DE AGOSTO',
+    'informacoes_de_contato_numero': '579',
+    'informacoes_de_contato_cemplemento': '10851',
+    'informacoes_de_contato_bairro': 'VÔO LIVRE',
+    'informacoes_de_contato_cidade': 'SAPIRANGA',
 }
 
 def set_data(proposta_data: PropostaData, page: Page):
@@ -55,7 +61,8 @@ def set_data(proposta_data: PropostaData, page: Page):
         'dados_da_simulacao_informe_o_valor_solicitado': informe_o_valor_solicitado,
         'dados_da_simulacao_valor_solicitado': valor_solicitado,
         'dados_da_simulacao_informe_o_prazo_solicitado': proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_prazo'],
-        'codigo_especie': proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_codigo_especie']
+        'codigo_especie': proposta_data['proposta_dados_para_liberacao']['proposta_dados_para_liberacao_codigo_especie'],
+        'informacoes_de_contato_cep': proposta_data['proposta_dados_do_tomador']['proposta_dados_do_tomador_cep']
     }
 
     return simulador_data
@@ -73,7 +80,7 @@ def print_dict(value: dict):
     for k, v in b.items():
         print(f'{k}: {v}')
  
-def main(playwright: Playwright):
+def main(playwright: Playwright):    
     browser = playwright.chromium.launch(headless=False, channel='chromium')
     # pageOne = browser.new_page()
     # pageOne.goto('https://sistemayuppie.com.br/agilizzapromotora/public/auth/login')
