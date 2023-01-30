@@ -28,3 +28,19 @@ NEXT_PAGE_TWO = '#etapa_2'
 
 BUSCAR_VENDEDOR_CPF = '#cpfVendedor'
 BUSCAR_VENDEDOR_LOGIN_OU_NOME = '#nomeVendedor'
+
+CEP_INFORMACOES_DE_CONTATO = '#cep'
+BUTTON_PESQUISAR_CEP = '#pesquisar_cep'
+
+ERROR_CEP_NOT_FOUND = '#corpo > div.bootbox.modal.fade.in > div.modal-body'
+
+ESTADO_CIVIL = '#estadoCivil'
+NOME_DO_PAI_NAO_CONSTA_NO_DOCUMENTO = '#nomePaiNao'
+CLIENTE_ILETRADO_OU_IMPOSSIBILITADO_DE_ASSINAR = '#clienteAnalfabeto'
+ENDERECO_RESIDENCIAL = '#endereco'
+NUMERO = '#numero'
+COMPLEMENTO = '#complemento'
+BAIRRO = '#bairro'
+CIDADE = '#cidade'
+TIPO_RESIDENCIA = '#tipoResidencia'
+ESCOLARIDADE = '#escolaridade'
