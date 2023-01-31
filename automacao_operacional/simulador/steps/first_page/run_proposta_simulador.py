@@ -5,6 +5,7 @@ from simulador.steps.util.element_identifiers import (
     NEXT_PAGE_ONE,
     NEXT_PAGE_TWO,
     NEXT_PAGE_THREE,
+    NEXT_PAGE_FOUR,
     DADOS_DA_SIMULACAO_INFORME_O_VALOR_SOLICITADO,
     DADOS_DA_SIMULACAO_VALOR_SOLICITADO,
     DADOS_DA_SIMULACAO_INFORME_O_PRAZO_SOLICITADO,
@@ -18,12 +19,12 @@ from .simulador_dados_da_simulacao import simulador_dados_da_simulacao
 from .simulador_tabela_for_operacao import simulador_tabela_for_operacao
 from ..third_page.informacoes_de_contato import informacoes_de_contato
 from ..second_page.dados_cadastro_operacao import dados_cadastro_operacao
+from ..fourth_page.dados_profissionais import dados_profissionais
 
 from time import sleep
 
 def run_proposta_simulador(page: Page, data: Data):
     page.evaluate('(PROPOSTA_SIMULADOR) => document.querySelector(PROPOSTA_SIMULADOR).click()', PROPOSTA_SIMULADOR)
-
     # Dados da Proposta
     simulador_dados_da_proposta(page, data)
 
@@ -51,3 +52,9 @@ def run_proposta_simulador(page: Page, data: Data):
     # Proxíma página
     page.evaluate('(NEXT_PAGE_THREE) => document.querySelector(NEXT_PAGE_THREE).click()', NEXT_PAGE_THREE)
     page.evaluate('(NAO_CONTRATAR_BUTTON) => document.querySelector(NAO_CONTRATAR_BUTTON).click()', NAO_CONTRATAR_BUTTON)
+    
+    # Dados profissonais
+    dados_profissionais(page)
+
+    # Proxíma página
+    page.evaluate('(NEXT_PAGE_FOUR) => document.querySelector(NEXT_PAGE_FOUR).click()', NEXT_PAGE_FOUR)
