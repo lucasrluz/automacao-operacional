@@ -10,7 +10,7 @@ from simulador.steps.util.data import Data
 
 load_dotenv()
 
-data = {
+data: Data = {
     'dados_da_proposta_produto': 'D',
     'dados_da_proposta_tipo_de_operacao': 'NOVO DIGITAL', 
     'dados_da_proposta_orgao_ou_empregador': 'INSS',
@@ -28,6 +28,9 @@ data = {
     'informacoes_de_contato_cemplemento': '10851',
     'informacoes_de_contato_bairro': 'VÔO LIVRE',
     'informacoes_de_contato_cidade': 'SAPIRANGA',
+    'informacoes_de_contato_celular': '(51) 99608-8437',
+    'informacoes_do_beneficio_valor_beneficio_ou_renda': '1397.89',
+    'informacoes_do_beneficio_beneficio_ou_matricula': '2048854561'
 }
 
 def set_data(proposta_data: PropostaData, page: Page):
