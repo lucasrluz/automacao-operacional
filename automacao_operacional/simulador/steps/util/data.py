@@ -20,4 +20,7 @@ class Data(TypedDict):
     informacoes_de_contato_cemplemento: str
     informacoes_de_contato_bairro: str
     informacoes_de_contato_cidade: str
+    informacoes_de_contato_celular: str
+    informacoes_do_beneficio_valor_beneficio_ou_renda: str
+    informacoes_do_beneficio_beneficio_ou_matricula: str
 
