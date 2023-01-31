@@ -4,10 +4,12 @@ from simulador.steps.util.element_identifiers import (
     PROPOSTA_SIMULADOR,
     NEXT_PAGE_ONE,
     NEXT_PAGE_TWO,
+    NEXT_PAGE_THREE,
     DADOS_DA_SIMULACAO_INFORME_O_VALOR_SOLICITADO,
     DADOS_DA_SIMULACAO_VALOR_SOLICITADO,
     DADOS_DA_SIMULACAO_INFORME_O_PRAZO_SOLICITADO,
-    PESQUISAR
+    PESQUISAR,
+    NAO_CONTRATAR_BUTTON
 )
 from .simulador_dados_da_proposta import simulador_dados_da_proposta
 from .simulador_dados_do_cliente import simulador_dados_do_cliente
@@ -45,3 +47,7 @@ def run_proposta_simulador(page: Page, data: Data):
 
     # Informações de contato
     informacoes_de_contato(page, data)
+
+    # Proxíma página
+    page.evaluate('(NEXT_PAGE_THREE) => document.querySelector(NEXT_PAGE_THREE).click()', NEXT_PAGE_THREE)
+    page.evaluate('(NAO_CONTRATAR_BUTTON) => document.querySelector(NAO_CONTRATAR_BUTTON).click()', NAO_CONTRATAR_BUTTON)
