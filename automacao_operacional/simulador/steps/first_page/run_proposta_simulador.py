@@ -57,4 +57,5 @@ def run_proposta_simulador(page: Page, data: Data):
     dados_profissionais(page)
 
     # Proxíma página
+    sleep(5)
     page.evaluate('(NEXT_PAGE_FOUR) => document.querySelector(NEXT_PAGE_FOUR).click()', NEXT_PAGE_FOUR)

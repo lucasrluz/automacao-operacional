@@ -29,7 +29,7 @@ def informacoes_de_contato(page: Page, data: Data):
     page.locator(CLIENTE_ILETRADO_OU_IMPOSSIBILITADO_DE_ASSINAR).select_option('N') # NÃO
     page.locator(ESCOLARIDADE).select_option('7')
 
-    page.locator(BENEFICIO_OU_MATRICULA).fill(data['informacoes_do_beneficio_beneficio_ou_matricula'])
+    # page.locator(BENEFICIO_OU_MATRICULA).fill(data['informacoes_do_beneficio_beneficio_ou_matricula'])
     valor_beneficio_ou_renda = data['informacoes_do_beneficio_valor_beneficio_ou_renda']
     page.evaluate(f'(VALOR_BENEFICIO_OU_RENDA) => document.querySelector(VALOR_BENEFICIO_OU_RENDA).value = {valor_beneficio_ou_renda}', VALOR_BENEFICIO_OU_RENDA)
 
@@ -48,7 +48,7 @@ def informacoes_de_contato(page: Page, data: Data):
         page.locator(CIDADE).select_option(citys[data['informacoes_de_contato_cidade']])
         page.locator(TIPO_RESIDENCIA).select_option('3') # ALUGADA
         page.locator(CELULAR).fill(data['informacoes_de_contato_celular'])
-
+        sleep(3)
         return
     
     # Get City, remove after

@@ -6,4 +6,5 @@ from simulador.steps.util.element_identifiers import (
 
 def dados_profissionais(page: Page):
     # page.locator(TIPO_DE_PROFISSAO).select_option('0001')
-    page.locator(DATA_DE_ADMISSAO).fill('01/01/2023')
+    # page.locator(DATA_DE_ADMISSAO).fill('01/01/2023')
+    ...
