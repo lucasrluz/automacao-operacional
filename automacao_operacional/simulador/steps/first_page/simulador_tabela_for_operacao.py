@@ -24,19 +24,21 @@ def simulador_tabela_for_operacao(page: Page, data: Data):
         return
     # sleep(100000)
 
-    # Seleciona tabela para operação
-    i = 1
-    while True:
-        TABLE_ID = f'#myTable > tbody > tr:nth-child({i}) > td:nth-child(2)'
+    # Seleciona a primeira tabela para operação
+    TABLE_ID = f'#myTable > tbody > tr:nth-child({1}) > td:nth-child(2)'
+    page.click(TABLE_ID)
+    # i = 1
+    # while True:
+    #     TABLE_ID = f'#myTable > tbody > tr:nth-child({i}) > td:nth-child(2)'
 
-        row = page.evaluate('(TABLE_ID) => document.querySelector(TABLE_ID)', TABLE_ID)
-        if row == None:
-            break
+    #     row = page.evaluate('(TABLE_ID) => document.querySelector(TABLE_ID)', TABLE_ID)
+    #     if row == None:
+    #         break
 
-        if data['codigo_especie'] == '32':
-            table_name = page.evaluate('(TABELA_ID) => document.querySelector(TABELA_ID).innerHTML', TABLE_ID)
+    #     if data['codigo_especie'] == '32':
+    #         table_name = page.evaluate('(TABELA_ID) => document.querySelector(TABELA_ID).innerHTML', TABLE_ID)
 
-            if table_name == '39195 - INSS Novo Especial RB':
-                page.click(TABLE_ID)
-                break
-        i += 1
+    #         if table_name == '39195 - INSS Novo Especial RB':
+    #             page.click(TABLE_ID)
+    #             break
+    #     i += 1
