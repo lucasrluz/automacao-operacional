@@ -23,4 +23,6 @@ class Data(TypedDict):
     informacoes_de_contato_celular: str
     informacoes_do_beneficio_valor_beneficio_ou_renda: str
     informacoes_do_beneficio_beneficio_ou_matricula: str
+    informacoes_pessoais_naturalidade_uf: str
+    informacoes_pessoais_naturalidade: str
 
