@@ -12,18 +12,18 @@ from digitalizar_propostas.facta.steps.util.element_identifiers import (
     PESQUISAR,
     NAO_CONTRATAR_BUTTON
 )
-from .first_page.simulador_dados_da_proposta import simulador_dados_da_proposta
-from .first_page.simulador_dados_do_cliente import simulador_dados_do_cliente
-from .first_page.simulador_dados_do_representante_legal import simulador_dados_do_representante_legal
-from .first_page.simulador_dados_da_simulacao import simulador_dados_da_simulacao
-from .first_page.simulador_tabela_for_operacao import simulador_tabela_for_operacao
-from .third_page.informacoes_de_contato import informacoes_de_contato
-from .second_page.dados_cadastro_operacao import dados_cadastro_operacao
-from .fourth_page.dados_profissionais import dados_profissionais
+from .steps.first_page.simulador_dados_da_proposta import simulador_dados_da_proposta
+from .steps.first_page.simulador_dados_do_cliente import simulador_dados_do_cliente
+from .steps.first_page.simulador_dados_do_representante_legal import simulador_dados_do_representante_legal
+from .steps.first_page.simulador_dados_da_simulacao import simulador_dados_da_simulacao
+from .steps.first_page.simulador_tabela_for_operacao import simulador_tabela_for_operacao
+from .steps.third_page.informacoes_de_contato import informacoes_de_contato
+from .steps.second_page.dados_cadastro_operacao import dados_cadastro_operacao
+from .steps.fourth_page.dados_profissionais import dados_profissionais
 
 from time import sleep
 
-def run_proposta_simulador(page: Page, data: Data):
+def run_facta(page: Page, data: Data):
     page.evaluate('(PROPOSTA_SIMULADOR) => document.querySelector(PROPOSTA_SIMULADOR).click()', PROPOSTA_SIMULADOR)
     sleep(100000)
     # Dados da Proposta
