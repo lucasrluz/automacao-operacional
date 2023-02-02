@@ -1,6 +1,6 @@
 from playwright.sync_api import Page
-from digitalizar_propostas.steps.util.data import Data
-from digitalizar_propostas.steps.util.element_identifiers import (
+from digitalizar_propostas.facta.steps.util.data import Data
+from digitalizar_propostas.facta.steps.util.element_identifiers import (
     PROPOSTA_SIMULADOR,
     NEXT_PAGE_ONE,
     NEXT_PAGE_TWO,
@@ -12,19 +12,20 @@ from digitalizar_propostas.steps.util.element_identifiers import (
     PESQUISAR,
     NAO_CONTRATAR_BUTTON
 )
-from .simulador_dados_da_proposta import simulador_dados_da_proposta
-from .simulador_dados_do_cliente import simulador_dados_do_cliente
-from .simulador_dados_do_representante_legal import simulador_dados_do_representante_legal
-from .simulador_dados_da_simulacao import simulador_dados_da_simulacao
-from .simulador_tabela_for_operacao import simulador_tabela_for_operacao
-from ..third_page.informacoes_de_contato import informacoes_de_contato
-from ..second_page.dados_cadastro_operacao import dados_cadastro_operacao
-from ..fourth_page.dados_profissionais import dados_profissionais
+from .first_page.simulador_dados_da_proposta import simulador_dados_da_proposta
+from .first_page.simulador_dados_do_cliente import simulador_dados_do_cliente
+from .first_page.simulador_dados_do_representante_legal import simulador_dados_do_representante_legal
+from .first_page.simulador_dados_da_simulacao import simulador_dados_da_simulacao
+from .first_page.simulador_tabela_for_operacao import simulador_tabela_for_operacao
+from .third_page.informacoes_de_contato import informacoes_de_contato
+from .second_page.dados_cadastro_operacao import dados_cadastro_operacao
+from .fourth_page.dados_profissionais import dados_profissionais
 
 from time import sleep
 
 def run_proposta_simulador(page: Page, data: Data):
     page.evaluate('(PROPOSTA_SIMULADOR) => document.querySelector(PROPOSTA_SIMULADOR).click()', PROPOSTA_SIMULADOR)
+    sleep(100000)
     # Dados da Proposta
     simulador_dados_da_proposta(page, data)
 

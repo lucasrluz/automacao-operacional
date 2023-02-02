@@ -1,6 +1,6 @@
 from playwright.sync_api import Page
-from digitalizar_propostas.steps.util.data import Data
-from digitalizar_propostas.steps.util.element_identifiers import (
+from digitalizar_propostas.facta.steps.util.data import Data
+from digitalizar_propostas.facta.steps.util.element_identifiers import (
     DADOS_DA_SIMULACAO_INFORME_O_PRAZO_SOLICITADO,
     DADOS_DA_SIMULACAO_VALOR_SOLICITADO,
     DADOS_DA_SIMULACAO_INFORME_O_VALOR_SOLICITADO

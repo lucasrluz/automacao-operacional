@@ -1,12 +1,12 @@
 from playwright.sync_api import Playwright, sync_playwright, Page
 from dotenv import load_dotenv
-from digitalizar_propostas.steps.first_page.login import login
-from digitalizar_propostas.steps.first_page.run_proposta_simulador import run_proposta_simulador
+from digitalizar_propostas.facta.steps.first_page.login import login
+from digitalizar_propostas.facta.steps.run_proposta_simulador import run_proposta_simulador
 from yuppie.steps.yuppie_login import yupie_login
 from yuppie.steps.propostas import propostas
 from yuppie.steps.util.proposta_data import PropostaData
 from time import sleep
-from digitalizar_propostas.steps.util.data import Data
+from digitalizar_propostas.facta.steps.util.data import Data
 
 load_dotenv()
 

@@ -1,7 +1,7 @@
 from playwright.sync_api import Page
-from digitalizar_propostas.steps.util.data import Data
+from digitalizar_propostas.facta.steps.util.data import Data
 from time import sleep
-from digitalizar_propostas.steps.util.element_identifiers import (
+from digitalizar_propostas.facta.steps.util.element_identifiers import (
     ERROR,
     PESQUISAR
 )
