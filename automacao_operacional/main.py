@@ -1,6 +1,6 @@
 from playwright.sync_api import Playwright, sync_playwright, Page
 from dotenv import load_dotenv
-from digitalizar_propostas.facta.steps.first_page.login import login
+from digitalizar_propostas.facta.steps.login import login
 from digitalizar_propostas.facta.run_facta import run_facta
 from yuppie.steps.yuppie_login import yupie_login
 from yuppie.steps.propostas import propostas

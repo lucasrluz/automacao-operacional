@@ -12,20 +12,20 @@ from digitalizar_propostas.facta.steps.util.element_identifiers import (
     PESQUISAR,
     NAO_CONTRATAR_BUTTON
 )
-from .steps.first_page.simulador_dados_da_proposta import simulador_dados_da_proposta
-from .steps.first_page.simulador_dados_do_cliente import simulador_dados_do_cliente
-from .steps.first_page.simulador_dados_do_representante_legal import simulador_dados_do_representante_legal
-from .steps.first_page.simulador_dados_da_simulacao import simulador_dados_da_simulacao
-from .steps.first_page.simulador_tabela_for_operacao import simulador_tabela_for_operacao
-from .steps.third_page.informacoes_de_contato import informacoes_de_contato
-from .steps.second_page.dados_cadastro_operacao import dados_cadastro_operacao
-from .steps.fourth_page.dados_profissionais import dados_profissionais
+from .steps.simulador_dados_da_proposta import simulador_dados_da_proposta
+from .steps.simulador_dados_do_cliente import simulador_dados_do_cliente
+from .steps.simulador_dados_da_simulacao import simulador_dados_da_simulacao
+from .steps.simulador_tabela_for_operacao import simulador_tabela_for_operacao
+from .steps.cadastro_dados_pessoais_informacoes_de_contato import cadastro_dados_pessoais_informacoes_de_contato
+from .steps.cadastro_dados_pessoais_informacoes_pessoais import cadastro_dados_pessoais_informacoes_pessoais
+from .steps.cadastro_dados_pessoais_informacoes_do_beneficio import cadastro_dados_pessoais_informacoes_do_beneficio
+from .steps.cadastro_propostas_dados_cadastro_operacao import cadastro_propostas_dados_cadastro_operacao
 
 from time import sleep
 
 def run_facta(page: Page, data: Data):
     page.evaluate('(PROPOSTA_SIMULADOR) => document.querySelector(PROPOSTA_SIMULADOR).click()', PROPOSTA_SIMULADOR)
-    sleep(100000)
+    
     # Dados da Proposta
     simulador_dados_da_proposta(page, data)
 
@@ -42,13 +42,20 @@ def run_facta(page: Page, data: Data):
     page.evaluate('(NEXT_PAGE_ONE) => document.querySelector(NEXT_PAGE_ONE).click()', NEXT_PAGE_ONE)
 
     # Seta vendedor
-    dados_cadastro_operacao(page)
+    cadastro_propostas_dados_cadastro_operacao(page)
 
     # Proxíma página
     page.click(NEXT_PAGE_TWO)
 
+    # Cadastro dados pessoais, informações de contato
+    cadastro_dados_pessoais_informacoes_pessoais(page, data)
+
+    # Cadastro dados pessoais, informações do benefício
+    cadastro_dados_pessoais_informacoes_do_beneficio(page, data)
+
     # Informações de contato
-    informacoes_de_contato(page, data)
+    cadastro_dados_pessoais_informacoes_de_contato(page, data)
+    sleep(100000)
 
     # Proxíma página
     page.evaluate('(NEXT_PAGE_THREE) => document.querySelector(NEXT_PAGE_THREE).click()', NEXT_PAGE_THREE)

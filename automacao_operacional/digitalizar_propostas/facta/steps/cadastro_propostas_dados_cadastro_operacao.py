@@ -6,7 +6,7 @@ from digitalizar_propostas.facta.steps.util.element_identifiers import (
 )
 from time import sleep
 
-def dados_cadastro_operacao(page: Page):
+def cadastro_propostas_dados_cadastro_operacao(page: Page):
     while True:
         try:
             if page.locator(BUSCAR_VENDEDOR_CPF).is_visible() == True:
