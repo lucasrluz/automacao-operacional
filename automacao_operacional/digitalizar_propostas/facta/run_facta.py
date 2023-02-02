@@ -6,10 +6,6 @@ from digitalizar_propostas.facta.steps.util.element_identifiers import (
     NEXT_PAGE_TWO,
     NEXT_PAGE_THREE,
     NEXT_PAGE_FOUR,
-    DADOS_DA_SIMULACAO_INFORME_O_VALOR_SOLICITADO,
-    DADOS_DA_SIMULACAO_VALOR_SOLICITADO,
-    DADOS_DA_SIMULACAO_INFORME_O_PRAZO_SOLICITADO,
-    PESQUISAR,
     NAO_CONTRATAR_BUTTON
 )
 from .steps.simulador_dados_da_proposta import simulador_dados_da_proposta
