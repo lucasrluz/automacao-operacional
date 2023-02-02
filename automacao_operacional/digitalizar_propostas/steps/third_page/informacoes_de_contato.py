@@ -1,5 +1,5 @@
 from playwright.sync_api import Page
-from simulador.steps.util.element_identifiers import (
+from digitalizar_propostas.steps.util.element_identifiers import (
     CEP_INFORMACOES_DE_CONTATO,
     BUTTON_PESQUISAR_CEP,
     ERROR_CEP_NOT_FOUND,
@@ -21,9 +21,9 @@ from simulador.steps.util.element_identifiers import (
     VALOR_PRATIMONIAL,
     NATURALIDADE_UF
 )
-from simulador.steps.util.citys import citys
-from simulador.steps.util.city_uf import city_uf
-from simulador.steps.util.data import Data
+from digitalizar_propostas.steps.util.citys import citys
+from digitalizar_propostas.steps.util.city_uf import city_uf
+from digitalizar_propostas.steps.util.data import Data
 from time import sleep
 
 def informacoes_de_contato(page: Page, data: Data):

@@ -1,6 +1,6 @@
 from playwright.sync_api import Page
-from simulador.steps.util.data import Data
-from simulador.steps.util.element_identifiers import (
+from digitalizar_propostas.steps.util.data import Data
+from digitalizar_propostas.steps.util.element_identifiers import (
     PROPOSTA_SIMULADOR,
     NEXT_PAGE_ONE,
     NEXT_PAGE_TWO,

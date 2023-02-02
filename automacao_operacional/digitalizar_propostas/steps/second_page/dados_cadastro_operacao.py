@@ -1,5 +1,5 @@
 from playwright.sync_api import Page
-from simulador.steps.util.element_identifiers import (
+from digitalizar_propostas.steps.util.element_identifiers import (
     BUSCAR_VENDEDOR_CPF,
     BUSCAR_VENDEDOR_LOGIN_OU_NOME,
     VENDEDOR

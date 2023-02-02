@@ -1,5 +1,5 @@
 from playwright.sync_api import Page
-from simulador.steps.util.element_identifiers import (
+from digitalizar_propostas.steps.util.element_identifiers import (
     TIPO_DE_PROFISSAO,
     DATA_DE_ADMISSAO
 )

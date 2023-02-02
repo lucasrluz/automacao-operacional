@@ -1,6 +1,6 @@
 from playwright.sync_api import Page
 from dotenv import dotenv_values
-from simulador.steps.util.element_identifiers import (
+from digitalizar_propostas.steps.util.element_identifiers import (
     LOGIN_USERNAME,
     LOGIN_PASSWORD,
     LOGIN_BUTTON_SUBMIT
