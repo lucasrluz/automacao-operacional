@@ -20,6 +20,7 @@ from .steps.cadastro_propostas_dados_cadastro_operacao import cadastro_propostas
 from time import sleep
 
 def run_facta(page: Page, data: Data):
+    # Vai para página para cadastrar propostas
     page.evaluate('(PROPOSTA_SIMULADOR) => document.querySelector(PROPOSTA_SIMULADOR).click()', PROPOSTA_SIMULADOR)
     
     # Dados da Proposta
