@@ -6,6 +6,7 @@ from yuppie.steps.propostas import propostas
 from yuppie.steps.util.proposta_data import PropostaData
 from time import sleep
 from digitalizar_propostas.facta.steps.util.data import Data
+from digitalizar_propostas.facta.steps.util.city_uf import city_uf
 
 load_dotenv()
 
@@ -14,24 +15,24 @@ data: Data = {
     'dados_da_proposta_tipo_de_operacao': 'NOVO DIGITAL', 
     'dados_da_proposta_orgao_ou_empregador': 'INSS',
     'dados_da_proposta_banco': '3',
-    'dados_do_cliente_cpf': '926.507.167-20',
+    'dados_do_cliente_cpf': '70517177072',
     'dados_do_cliente_data_de_nascimento': '',
     'dados_do_cliente_nome_do_cliente': '',
-    'dados_da_simulacao_informe_o_valor_solicitado': '100.00', # 200000 or 2000 
+    'dados_da_simulacao_informe_o_valor_solicitado': '92,10',
     'dados_da_simulacao_valor_solicitado': 'Parcela',
     'dados_da_simulacao_informe_o_prazo_solicitado': '84', 
     'codigo_especie': '32',
     'informacoes_de_contato_cep': '21931120',
-    'informacoes_de_contato_endereco': 'RUA MARAPET',
-    'informacoes_de_contato_numero': '2542',
-    'informacoes_de_contato_cemplemento': '8675',
-    'informacoes_de_contato_bairro': 'JARDIM GUANABARA',
-    'informacoes_de_contato_cidade': 'RIO DE JANEIRO',
-    'informacoes_de_contato_celular': '(21) 99887-3388',
-    'informacoes_do_beneficio_valor_beneficio_ou_renda': '4.503,49',
-    'informacoes_do_beneficio_beneficio_ou_matricula': '0464124',
+    'informacoes_de_contato_endereco': 'Rua Adelaide Rodrigues',
+    'informacoes_de_contato_numero': '52',
+    'informacoes_de_contato_cemplemento': 'D',
+    'informacoes_de_contato_bairro': 'Bela Vista',
+    'informacoes_de_contato_cidade': 'CHAPECO',
+    'informacoes_de_contato_celular': '(49) 99120-4988',
+    'informacoes_do_beneficio_valor_beneficio_ou_renda': '1,00',
+    'informacoes_do_beneficio_beneficio_ou_matricula': '1621569672',
     'informacoes_pessoais_naturalidade_uf': 'SC',
-    'informacoes_pessoais_naturalidade': 'FLORIANOPOLIS'
+    'informacoes_pessoais_naturalidade': 'GUAPORE'
 }
 
 def set_data(proposta_data: PropostaData, page: Page):
@@ -84,7 +85,7 @@ def print_dict(value: dict):
     for k, v in b.items():
         print(f'{k}: {v}')
  
-def main(playwright: Playwright):    
+def main(playwright: Playwright):
     browser = playwright.chromium.launch(headless=False, channel='chromium')
     # pageOne = browser.new_page()
     # pageOne.goto('https://sistemayuppie.com.br/agilizzapromotora/public/auth/login')

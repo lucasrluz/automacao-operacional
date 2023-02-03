@@ -1,71 +1,49 @@
 from playwright.sync_api import Page
 from digitalizar_propostas.facta.steps.util.data import Data
 from digitalizar_propostas.facta.steps.util.element_identifiers import (
-    PROPOSTA_SIMULADOR,
-    NEXT_PAGE_ONE,
-    NEXT_PAGE_TWO,
     NEXT_PAGE_THREE,
     NEXT_PAGE_FOUR,
     NAO_CONTRATAR_BUTTON
 )
-from .steps.simulador_dados_da_proposta import simulador_dados_da_proposta
-from .steps.simulador_dados_do_cliente import simulador_dados_do_cliente
-from .steps.simulador_dados_da_simulacao import simulador_dados_da_simulacao
-from .steps.simulador_tabela_for_operacao import simulador_tabela_for_operacao
-from .steps.cadastro_dados_pessoais_informacoes_de_contato import cadastro_dados_pessoais_informacoes_de_contato
-from .steps.cadastro_dados_pessoais_informacoes_pessoais import cadastro_dados_pessoais_informacoes_pessoais
-from .steps.cadastro_dados_pessoais_informacoes_do_beneficio import cadastro_dados_pessoais_informacoes_do_beneficio
-from .steps.cadastro_propostas_dados_cadastro_operacao import cadastro_propostas_dados_cadastro_operacao
 from .steps.login import login
+from .steps.run_simulador import run_simulador
+from .steps.run_cadastro_propostas import run_cadastro_propostas
+from .steps.run_cadastro_dados_pessoais import run_cadastro_dados_pessoais
+from .steps.goto.goto_simulador import goto_simulador
+from .steps.goto.goto_cadastro_propostas import goto_cadastro_propostas
+from .steps.goto.goto_cadastro_dados_pessoais import goto_cadastro_dados_pessoais
+from .steps.goto.goto_dados_complementares import goto_dados_complementares
+from .steps.goto.goto_inserir_anexos import goto_inserir_anexos
 
 from time import sleep
 
 def run_facta(page: Page, data: Data):
-    # Login na página facta
+    # Vai para página de login do facta
+    page.goto('https://desenv.facta.com.br/sistemaNovo/login.php')
+    # Executa login no facta
     login(page)
 
-    # Vai para página de cadastro propostas
-    sleep(5)
-    page.evaluate('(PROPOSTA_SIMULADOR) => document.querySelector(PROPOSTA_SIMULADOR).click()', PROPOSTA_SIMULADOR)
+    # Vai para página simulador
+    goto_simulador(page)
     
-    # Dados da Proposta
-    simulador_dados_da_proposta(page, data)
+    # Executa parte do simulador
+    run_simulador(page, data)
+    
+    # Vai para cadastro propostas
+    goto_cadastro_propostas(page)
+
+    # Executa parte de cadastro de proposta 
+    run_cadastro_propostas(page)
+
+    # Vair para parte de cadastro de dados pessoais
+    goto_cadastro_dados_pessoais(page)
+
+    # Executa parte de cadastro de dados pessoais
+    run_cadastro_dados_pessoais(page, data)
     sleep(1000000)
-    # Dados do Cliente
-    simulador_dados_do_cliente(page, data)
 
-    # Dados da Simulação
-    simulador_dados_da_simulacao(page, data)
+    # Vai para parte de cadastro de dados complementares
+    goto_dados_complementares(page)
 
-    # Selecionar tabelas
-    simulador_tabela_for_operacao(page, data)
-    
-    # Proxima página
-    page.evaluate('(NEXT_PAGE_ONE) => document.querySelector(NEXT_PAGE_ONE).click()', NEXT_PAGE_ONE)
-
-    # Seta vendedor
-    cadastro_propostas_dados_cadastro_operacao(page)
-
-    # Proxíma página
-    page.click(NEXT_PAGE_TWO)
-
-    # Cadastro dados pessoais, informações de contato
-    cadastro_dados_pessoais_informacoes_pessoais(page, data)
-
-    # Cadastro dados pessoais, informações do benefício
-    cadastro_dados_pessoais_informacoes_do_beneficio(page, data)
-
-    # Informações de contato
-    cadastro_dados_pessoais_informacoes_de_contato(page, data)
-    sleep(100000)
-
-    # Proxíma página
-    page.evaluate('(NEXT_PAGE_THREE) => document.querySelector(NEXT_PAGE_THREE).click()', NEXT_PAGE_THREE)
-    page.evaluate('(NAO_CONTRATAR_BUTTON) => document.querySelector(NAO_CONTRATAR_BUTTON).click()', NAO_CONTRATAR_BUTTON)
-    
-    # Dados profissonais
-    dados_profissionais(page)
-
-    # Proxíma página
-    sleep(5)
-    page.evaluate('(NEXT_PAGE_FOUR) => document.querySelector(NEXT_PAGE_FOUR).click()', NEXT_PAGE_FOUR)
+    # Vai para parte de inserir anexos
+    goto_inserir_anexos(page)
