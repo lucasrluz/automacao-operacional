@@ -21,9 +21,6 @@ from .steps.login import login
 from time import sleep
 
 def run_facta(page: Page, data: Data):
-    # Vai para página de login do facta
-    page.goto('https://desenv.facta.com.br/sistemaNovo/login.php')
-
     # Login na página facta
     login(page)
 
