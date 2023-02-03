@@ -1,6 +1,5 @@
 from playwright.sync_api import Playwright, sync_playwright, Page
 from dotenv import load_dotenv
-from digitalizar_propostas.facta.steps.login import login
 from digitalizar_propostas.facta.run_facta import run_facta
 from yuppie.steps.yuppie_login import yupie_login
 from yuppie.steps.propostas import propostas
@@ -95,14 +94,11 @@ def main(playwright: Playwright):
     # proposta_data = propostas(pageOne)
     # print_dict(proposta_data)
 
-    pageTwo = browser.new_page()
-    pageTwo.goto('https://desenv.facta.com.br/sistemaNovo/login.php')
-    login(pageTwo)
-
     # simulador_data = set_data(proposta_data, pageTwo)
-
-    sleep(5)
-    run_facta(pageTwo, data)
+    
+    facta_page = browser.new_page()
+    
+    run_facta(facta_page, data)
     
     sleep(10000000)
 

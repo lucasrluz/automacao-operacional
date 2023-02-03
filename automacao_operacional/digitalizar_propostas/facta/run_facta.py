@@ -16,16 +16,24 @@ from .steps.cadastro_dados_pessoais_informacoes_de_contato import cadastro_dados
 from .steps.cadastro_dados_pessoais_informacoes_pessoais import cadastro_dados_pessoais_informacoes_pessoais
 from .steps.cadastro_dados_pessoais_informacoes_do_beneficio import cadastro_dados_pessoais_informacoes_do_beneficio
 from .steps.cadastro_propostas_dados_cadastro_operacao import cadastro_propostas_dados_cadastro_operacao
+from .steps.login import login
 
 from time import sleep
 
 def run_facta(page: Page, data: Data):
-    # Vai para página para cadastrar propostas
+    # Vai para página de login do facta
+    page.goto('https://desenv.facta.com.br/sistemaNovo/login.php')
+
+    # Login na página facta
+    login(page)
+
+    # Vai para página de cadastrar propostas
+    sleep(5)
     page.evaluate('(PROPOSTA_SIMULADOR) => document.querySelector(PROPOSTA_SIMULADOR).click()', PROPOSTA_SIMULADOR)
     
     # Dados da Proposta
     simulador_dados_da_proposta(page, data)
-
+    sleep(1000000)
     # Dados do Cliente
     simulador_dados_do_cliente(page, data)
 
