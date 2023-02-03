@@ -27,7 +27,7 @@ def run_facta(page: Page, data: Data):
     # Login na página facta
     login(page)
 
-    # Vai para página de cadastrar propostas
+    # Vai para página de cadastro propostas
     sleep(5)
     page.evaluate('(PROPOSTA_SIMULADOR) => document.querySelector(PROPOSTA_SIMULADOR).click()', PROPOSTA_SIMULADOR)
     
